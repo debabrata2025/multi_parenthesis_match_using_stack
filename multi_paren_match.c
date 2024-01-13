@@ -6,7 +6,6 @@ struct stack
     int size;
     char *arr;
 };
-
 // isEmpty
 int isEmpty(struct stack *sp){
     if (sp->top == -1)
@@ -16,7 +15,6 @@ int isEmpty(struct stack *sp){
         return 0;
     }
 }
-
 //isFull
 int isFull(struct stack *sp){
     if (sp->top == sp->size-1)
@@ -26,7 +24,6 @@ int isFull(struct stack *sp){
         return 0;
     }
 }
-
 //push
 void push(struct stack *sp, int data){
     if (isFull(sp))
@@ -37,7 +34,6 @@ void push(struct stack *sp, int data){
         sp->arr[sp->top] = data;
     }
 }
-
 //pop
 char pop(struct stack *sp){
     if (isEmpty(sp))
@@ -49,6 +45,7 @@ char pop(struct stack *sp){
         return val;
     }
 }
+//match expression with popped charecter
 int match(char a, char b){
     if(a=='{' && b=='}'){
         return 1;
@@ -61,7 +58,7 @@ int match(char a, char b){
     }
   return 0;  
 }
- 
+ //matching multiple parentehesis
 int parenthesisMatch(char * exp){
     // Create and initialize the stack
     struct stack* sp;
@@ -69,7 +66,6 @@ int parenthesisMatch(char * exp){
     sp->top = -1;
     sp->arr = (char *)malloc(sp->size * sizeof(char));
     char popped_ch;
- 
     for (int i = 0; exp[i]!='\0'; i++)
     {
         if(exp[i]=='(' || exp[i]=='{' || exp[i]=='['){
@@ -90,13 +86,12 @@ int parenthesisMatch(char * exp){
     }
     else{
         return 0;
-    }
-    
+    } 
 }
+
 int main()
 {
     char *exp = "[4-6]((8){(9-8)})";;
-
     if (parenthesisMatch(exp))
     {
         printf("matched\n");
